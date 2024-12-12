@@ -26,7 +26,7 @@ public class CarrinhoDeCompras {
       }
       itemList.removeAll(itensParaRemover);
     } else {
-      System.out.println("A lista está vazia!");
+      System.out.println("Não há itens na lista.");
     }
   }
 
@@ -34,12 +34,12 @@ public class CarrinhoDeCompras {
     double valorTotal = 0d;
     if (!itemList.isEmpty()) {
       for (Item item : itemList) {
-        double valorItem = item.getPreco() * item.getQuant();
-        valorTotal += valorItem; //valorTotal = valorTotal + valorItem;
+        double valorItem = item.getPreco() * item.getQuantidade();
+        valorTotal += valorItem;
       }
       return valorTotal;
     } else {
-      throw new RuntimeException("A lista está vazia!");
+      throw new RuntimeException("Não há itens na lista.");
     }
   }
 
@@ -47,7 +47,7 @@ public class CarrinhoDeCompras {
     if (!itemList.isEmpty()) {
       System.out.println(this.itemList);
     } else {
-      System.out.println("A lista está vazia!");
+      System.out.println("Não há itens na lista.");
     }
   }
 
@@ -59,25 +59,21 @@ public class CarrinhoDeCompras {
   }
 
   public static void main(String[] args) {
-    // Criando uma instância do carrinho de compras
     CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
 
-    // Adicionando itens ao carrinho
-    carrinhoDeCompras.adicionarItem("Lápis", 2d, 3);
-    carrinhoDeCompras.adicionarItem("Lápis", 2d, 3);
-    carrinhoDeCompras.adicionarItem("Caderno", 35d, 1);
-    carrinhoDeCompras.adicionarItem("Borracha", 2d, 2);
+    carrinhoDeCompras.adicionarItem("coca-cola 2l", 11d, 6);
+    carrinhoDeCompras.adicionarItem("macarrão", 7d, 2);
+    carrinhoDeCompras.adicionarItem("arroz", 35d, 1);
+    carrinhoDeCompras.adicionarItem("feijão", 17d, 1);
+    carrinhoDeCompras.adicionarItem("alho", 13d, 2);
+    carrinhoDeCompras.adicionarItem("farofa", 15d, 1);
 
-    // Exibindo os itens no carrinho
     carrinhoDeCompras.exibirItens();
 
-    // Removendo um item do carrinho
     carrinhoDeCompras.removerItem("Lápis");
 
-    // Exibindo os itens atualizados no carrinho
     carrinhoDeCompras.exibirItens();
 
-    // Calculando e exibindo o valor total da compra
     System.out.println("O valor total da compra é = " + carrinhoDeCompras.calcularValorTotal());
   }
 }
